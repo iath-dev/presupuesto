@@ -1,22 +1,26 @@
 import React from 'react';
 import ErrorMessage from './error';
 
-const Question = ({ setData, setSavings }) => {
+const Question = ({ setData, setSavings, setShow }) => {
 
-    const [budqet, setBudqet] = React.useState(0);
+    const [budget, setBudget] = React.useState(0);
     const [error, setError] = React.useState(false);
 
     const handleChange = event => {
         const { value } = event.target;
-        setBudqet(parseInt(value));
+        setBudget(parseInt(value));
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (budqet < 1 || isNaN(budqet)) {
+        if (budget < 1 || isNaN(budget)) {
             setError(true);
+            return;
         }
         setError(false);
+        setSavings(budget);
+        setData(budget)
+        setShow(false);
     }
 
     return (
@@ -28,7 +32,7 @@ const Question = ({ setData, setSavings }) => {
                     type="number"
                     className="u-full-width"
                     placeholder="Indique su presupuesto"
-                    value={budqet}
+                    value={budget}
                     onChange={handleChange}
                 />
                 <button
