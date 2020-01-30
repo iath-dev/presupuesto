@@ -1,5 +1,6 @@
 import React from 'react';
 import ErrorMessage from './error';
+import PropTypes from 'prop-types';
 
 const Question = ({ setData, setSavings, setShow }) => {
 
@@ -18,8 +19,8 @@ const Question = ({ setData, setSavings, setShow }) => {
             return;
         }
         setError(false);
-        setSavings(budget);
-        setData(budget)
+        setSavings(parseInt(budget));
+        setData(parseInt(budget))
         setShow(false);
     }
 
@@ -44,6 +45,12 @@ const Question = ({ setData, setSavings, setShow }) => {
             </form>
         </React.Fragment>
     )
+}
+
+Question.propTypes = {
+    setData: PropTypes.func.isRequired,
+    setSavings: PropTypes.func.isRequired,
+    setShow: PropTypes.func.isRequired,
 }
 
 export default Question;

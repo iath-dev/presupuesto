@@ -1,6 +1,7 @@
 import React from 'react';
 import ErrorMessage from './error';
 import shortid from 'shortid';
+import PropTypes from 'prop-types';
 
 const CostForm = ({ onAdd }) => {
 
@@ -57,6 +58,10 @@ const CostForm = ({ onAdd }) => {
             />
         </form>
     )
+}
+
+CostForm.propTypes = {
+    onAdd: PropTypes.func.isRequired,
 }
 
 export default CostForm;

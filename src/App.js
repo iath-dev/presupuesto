@@ -1,6 +1,8 @@
 import React from 'react';
 import Question from './components/question';
 import CostForm from './components/form';
+import CostList from './components/list';
+import ControlBudget from './components/control';
 
 function App() {
 
@@ -12,6 +14,7 @@ function App() {
 
   const addCost = cost => {
     setCosts([...costs, cost]);
+    setSavings(parseInt(savings) - parseInt(cost.cost));
   }
 
   return (
@@ -27,7 +30,8 @@ function App() {
                 <CostForm onAdd={addCost} />
               </div>
               <div className="one-half column">
-                <p>Hola</p>
+                <CostList costs={costs} />
+                <ControlBudget budget={budget} savings={savings} />
               </div>
             </div>
           )}
